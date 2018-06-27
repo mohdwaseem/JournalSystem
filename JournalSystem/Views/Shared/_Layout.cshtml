@@ -1,42 +1,177 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>@ViewBag.Title | Export Admin</title>
     @Styles.Render("~/Content/css")
+    <!--[if IE 7]><link rel="stylesheet" href="@Url.Content("~/assets/css/fontawesome/font-awesome-ie7.min.css")"><![endif]-->
+    <!--[if IE 8]><link href="@Url.Content("~/assets/css/ie8.css")" rel="stylesheet" type="text/css"/><![endif]-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet'
+          type='text/css'>
+    <link href="@Url.Content("~/assets/css/plugins.css")" rel='stylesheet' type='text/css'>
+    <link href="@Url.Content("~/assets/css/fontawesome/font-awesome.min.css")" rel='stylesheet' type='text/css'>
+
+
+    <link href="@Url.Content("~/plugins/noty/noty.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/plugins/noty/themes/metroui.css")" rel="stylesheet" />
+
     @Scripts.Render("~/bundles/modernizr")
+
+
+    <script src="@Url.Content("~/Scripts/jquery-2.1.4.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/bootstrap/js/bootstrap.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/assets/js/libs/lodash.compat.min.js")"></script>
+    <!--[if lt IE 9]><script src="@Url.Content("~/assets/js/libs/html5shiv.js")"></script><![endif]-->
+    <script type="text/javascript" src="@Url.Content("~/plugins/touchpunch/jquery.ui.touch-punch.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/event.swipe/jquery.event.move.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/event.swipe/jquery.event.swipe.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/assets/js/libs/breakpoints.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/respond/respond.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/cookie/jquery.cookie.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/slimscroll/jquery.slimscroll.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/slimscroll/jquery.slimscroll.horizontal.min.js")"></script>
+
+    <!--[if lt IE 9]><script type="text/javascript" src="@Url.Content("~/plugins/flot/excanvas.min.js")"></script><![endif]-->
+    @*<script type="text/javascript" src="@Url.Content("~/plugins/sparkline/jquery.sparkline.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/plugins/flot/jquery.flot.min.js")"></script>
+          <script type="text/javascript" src="@Url.Content("~/plugins/flot/jquery.flot.tooltip.min.js")"></script>
+          <script type="text/javascript" src="@Url.Content("~/plugins/flot/jquery.flot.resize.min.js")"></script>
+          <script type="text/javascript" src="@Url.Content("~/plugins/flot/jquery.flot.time.min.js")"></script>
+          <script type="text/javascript" src="@Url.Content("~/plugins/flot/jquery.flot.growraf.min.js")"></script>
+          <script type="text/javascript" src="@Url.Content("~/plugins/easy-pie-chart/jquery.easy-pie-chart.min.js")"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/plugins/daterangepicker/moment.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/daterangepicker/daterangepicker.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/blockui/jquery.blockUI.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/fullcalendar/fullcalendar.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/noty/noty.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/nprogress/nprogress.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/uniform/jquery.uniform.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/select2/select2.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/assets/js/app.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/assets/js/plugins.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/pickadate/picker.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/pickadate/picker.date.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/pickadate/picker.time.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/plugins/validation/dist/jquery.validate.js")"></script>
+
+    <script>$(document).ready(function () { App.init(); Plugins.init(); });</script>
+
+
+    <script type="text/javascript" src="@Url.Content("~/assets/js/custom.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/assets/js/demo/pages_calendar.js")"></script>
+    @*<script type="text/javascript" src="@Url.Content("~/assets/js/demo/charts/chart_filled_blue.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/assets/js/demo/charts/chart_simple.js")"></script>*@
+
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <header class="header navbar navbar-fixed-top" role="banner">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <ul class="nav navbar-nav">
+                <li class="nav-toggle"><a href="javascript:void(0);" title=""><i class="icon-reorder"></i></a></li>
+            </ul>
+            <a class="navbar-brand" href="@Url.Action("Dashboard","Account")">
+                <img src="@Url.Content("~/assets/img/logo.png")" alt="logo" />
+                <strong>Export</strong>Admin
+            </a><a href="#" class="toggle-sidebar bs-tooltip" data-placement="bottom" data-original-title="Toggle navigation"><i class="icon-reorder"></i></a>
+            <ul class="nav navbar-nav navbar-left hidden-xs hidden-sm">
+                <li> @Html.ActionLink("Dashboard", "Dashboard", "Account")</li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-warning-sign"></i><span class="badge">5</span> </a>
+                    <ul class="dropdown-menu extended notification">
+                        <li class="title">
+                            <p>You have 5 new notifications</p>
+                        </li>
+                        <li><a href="javascript:void(0);"><span class="label label-success"><i class="icon-plus"></i></span><span class="message">New user registration.</span> <span class="time">1 mins</span> </a></li>
+
+                        <li class="footer"><a href="javascript:void(0);">View all notifications</a> </li>
+                    </ul>
+                </li>
+                <li class="dropdown hidden-xs hidden-sm">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-tasks"></i><span class="badge">7</span> </a>
+                    <ul class="dropdown-menu extended notification">
+                        <li class="title">
+                            <p>You have 7 pending tasks</p>
+                        </li>
+
+
+                        <li class="footer"><a href="javascript:void(0);">View all tasks</a> </li>
+                    </ul>
+                </li>
+                <li class="dropdown hidden-xs hidden-sm">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-envelope"></i><span class="badge">1</span> </a>
+                    <ul class="dropdown-menu extended notification">
+                        <li class="title">
+                            <p>You have 3 new messages</p>
+                        </li>
+
+                        <li class="footer"><a href="javascript:void(0);">View all messages</a> </li>
+                    </ul>
+                </li>
+
+
+                <li class="dropdown user">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-male"></i><span class="username">User Name</span> <i class="icon-caret-down small"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><i class="icon-user"></i>My Profile</a></li>
+                        <li><a href="#"><i class="icon-tasks"></i>My Tasks</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="icon-key"></i>Log Out</a></li>
+                    </ul>
+                    @*@Html.Partial("_LoginPartial")*@
+                </li>
+            </ul>
+        </div>
+
+    </header>
+    <div id="container">
+        <div id="sidebar" class="sidebar-fixed">
+            <div id="sidebar-content">
+                <form class="sidebar-search">
+                    <div class="input-box">
+                        <button type="submit" class="submit">
+                            <i class="icon-search"></i>
+                        </button>
+                        <span>
+                            <input type="text" placeholder="Search...">
+                        </span>
+                    </div>
+                </form>
+
+                <ul id="nav">
+                    <li class="current">
+                        <a href="@Url.Action("Dashboard","Admin")"><i class="icon-dashboard"></i>Dashboard </a>
+                    </li>
+
+
+                    <li><a href="@Url.Action("JournalMaster","Admin")"><i class="icon-edit-sign"></i>Journal Master</a> </li>
+                    <li><a href="@Url.Action("IssueMaster","Admin")"><i class="icon-edit-sign"></i>Issue Master</a> </li>
+
+
+
+
                 </ul>
+                <div class="sidebar-title">
+                    <span>Notifications</span>
+                </div>
+
+            </div>
+            <div id="divider" class="resizeable">
+            </div>
+        </div>
+
+        <div id="content">
+            <div class="container">
+                @RenderBody()
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @RenderSection("scripts", false)
 </body>
 </html>
