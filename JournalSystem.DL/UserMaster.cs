@@ -12,18 +12,20 @@ namespace JournalSystem.DL
     using System;
     using System.Collections.Generic;
     
-    public partial class IssueMaster
+    public partial class UserMaster
     {
-        public int Id { get; set; }
-        public int JournalId { get; set; }
-        public string Volume { get; set; }
-        public string Issue { get; set; }
-        public string Year { get; set; }
-        public bool IsCurrent { get; set; }
+        public int UserId { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string PasswordSalt { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public bool IsActive { get; set; }
-        public bool IsAhead { get; set; }
+        public bool IsSuperAdmin { get; set; }
+        public string Role { get; set; }
+        public System.Guid UserIdGuid { get; set; }
         public System.DateTime CreatedOn { get; set; }
-        public string CreatedBy { get; set; }
-        public string Description { get; set; }
+        public System.DateTime UpdatedOn { get; set; }
+        public bool IsDelete { get; set; }
     }
 }

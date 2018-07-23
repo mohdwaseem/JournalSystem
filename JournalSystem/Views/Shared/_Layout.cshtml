@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>@ViewBag.Title | Export Admin</title>
+    <title>@ViewBag.Title | Journal Admin</title>
     @Styles.Render("~/Content/css")
     <!--[if IE 7]><link rel="stylesheet" href="@Url.Content("~/assets/css/fontawesome/font-awesome-ie7.min.css")"><![endif]-->
     <!--[if IE 8]><link href="@Url.Content("~/assets/css/ie8.css")" rel="stylesheet" type="text/css"/><![endif]-->
@@ -74,7 +74,7 @@
             </ul>
             <a class="navbar-brand" href="@Url.Action("Dashboard","Account")">
                 <img src="@Url.Content("~/assets/img/logo.png")" alt="logo" />
-                <strong>Export</strong>Admin
+                <strong>Journal</strong>Admin
             </a><a href="#" class="toggle-sidebar bs-tooltip" data-placement="bottom" data-original-title="Toggle navigation"><i class="icon-reorder"></i></a>
             <ul class="nav navbar-nav navbar-left hidden-xs hidden-sm">
                 <li> @Html.ActionLink("Dashboard", "Dashboard", "Account")</li>
@@ -116,14 +116,14 @@
 
 
                 <li class="dropdown user">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-male"></i><span class="username">User Name</span> <i class="icon-caret-down small"></i></a>
-                    <ul class="dropdown-menu">
+                    @*<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-male"></i><span class="username">User Name</span> <i class="icon-caret-down small"></i></a>*@
+                    @*<ul class="dropdown-menu">
                         <li><a href="#"><i class="icon-user"></i>My Profile</a></li>
                         <li><a href="#"><i class="icon-tasks"></i>My Tasks</a></li>
                         <li class="divider"></li>
                         <li><a href="#"><i class="icon-key"></i>Log Out</a></li>
-                    </ul>
-                    @*@Html.Partial("_LoginPartial")*@
+                    </ul>*@
+                    @Html.Partial("_LoginPartial")
                 </li>
             </ul>
         </div>
@@ -151,7 +151,7 @@
 
                     <li><a href="@Url.Action("JournalMaster","Admin")"><i class="icon-edit-sign"></i>Journal Master</a> </li>
                     <li><a href="@Url.Action("IssueMaster","Admin")"><i class="icon-edit-sign"></i>Issue Master</a> </li>
-
+                    <li><a href="@Url.Action("ArticlesMaster","Admin")"><i class="icon-edit-sign"></i>Articles Master</a> </li>
 
 
 

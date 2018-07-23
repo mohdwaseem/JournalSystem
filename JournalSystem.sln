@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JournalSystem", "JournalSystem\JournalSystem.csproj", "{B6F40B16-62E8-4C70-BA35-563D3C62B91C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JournalSystem.BL", "JournalSystem.BL\JournalSystem.BL.csproj", "{C55C386C-26B4-40D0-9CAD-A953746B179D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BAL", "JournalSystem.BL\BAL.csproj", "{C55C386C-26B4-40D0-9CAD-A953746B179D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JournalSystem.DL", "JournalSystem.DL\JournalSystem.DL.csproj", "{A811870F-B1C1-4CB8-91C3-FA4F5973F270}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "JournalSystem.DL\DAL.csproj", "{A811870F-B1C1-4CB8-91C3-FA4F5973F270}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

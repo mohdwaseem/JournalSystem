@@ -1,7 +1,278 @@
-﻿
+﻿@model BAL.Models.JournalMasterModel
 @{
-    ViewBag.Title = "JournalMaster";
+    ViewBag.Title = "Journal Master";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>JournalMaster</h2>
+<div class="crumbs">
+    <ul id="breadcrumbs" class="breadcrumb">
+        <li><i class="icon-home"></i><a href="@Url.Action("Dashboard","Admin")">Dashboard</a> </li>
+        <li class="current"><a href="pages" title="">Journal Master</a> </li>
+    </ul>
 
+</div>
+<div class="page-header">
+    <div class="page-title">
+        <h3>
+            Manage Journals
+        </h3>
+
+    </div>
+
+</div>
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="widget box">
+            <div class="widget-header">
+                <h4>Add Journals</h4>
+            </div>
+            <div class="widget-content">
+
+                <input type="hidden" id="hdID" value="0" />
+                <form  class="form-horizontal" id="myForm" method="post">
+
+                    @Html.AntiForgeryToken()
+                  
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">
+                            @Html.LabelFor(x => x.JournalTitle) <span class="required">*</span>
+                        </label>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(x => x.JournalTitle, new { @class = "form-control"})
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">
+                            @Html.LabelFor(x => x.Description) <span class="required">*</span>
+                        </label>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                        <label class="col-md-3 control-label">
+                            @Html.LabelFor(x => x.CoverPage, "Select Cover Image") <span class="required">*</span>
+                        </label>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(x => x.CoverPage, new { @class = "form-control", @type = "file" })
+                        </div>
+                    </div>*@
+                    
+                    <div class="form-actions">
+
+                        <input type="button" ID="saveButton" value="Submit" class="btn btn-primary  col-md-offset-5" />
+                        <input type="reset" ID="resetButton" onclick="ResetForm()" value="Clear" class="btn btn-inverse " />
+                    </div>
+
+
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget box">
+            <div class="widget-header">
+                <h4>Journals List</h4>
+            </div>
+            <div class="widget-content">
+                <table id="demoGrid" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>JournalTitle</th>
+                            <th>Description</th>
+                            <th>CreatedBy</th>
+                            <th>CreatedOn</th>
+                            <th>Edit</th>
+                            
+                        </tr>
+                    </thead>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <link href="@Url.Content("~/Content/DataTables/css/jquery.dataTables.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/DataTables/jquery.dataTables.js")"></script>
+    <script src="@Url.Content("~/Scripts/tinymce/tinymce.js")"></script>
+    <script>
+    $('#saveButton').click(function () {
+        if ($("#myForm").valid()) {
+                    var formData = $('#myForm'); // You need to use standard javascript object here
+                    $.ajax({
+                        url: '@Url.Action("JournalMaster", "Admin")',
+                        type: "POST",
+                        data: formData.serialize() + "&action=" + $('#saveButton').val() + "&id=" + $("#hdID").val() + "",
+                        success: function (data) {
+                            new Noty({
+                                text: data,
+                                type: 'success',
+                                theme: 'metroui',
+                                timeout: 2000
+                            }).show();
+                            NProgress.done();
+                            $("#myForm")[0].reset();
+                            oTable = $('#demoGrid').DataTable();
+                            oTable.draw();
+                            $("#saveButton").val("Submit");
+                        },
+                        error: function (jqXHR) {
+                            new Noty({
+                                text: jqXHR.status,
+                                type: 'error',
+                                theme: 'metroui',
+                                timeout: 2000
+                            }).show();
+                        }
+                    });
+                }
+                 
+            else {
+                new Noty({
+                    text: 'Please fill form',
+                    type: 'error',
+                    theme: 'metroui',
+                    timeout: 2000
+                }).show();
+            }
+        });
+    $("#myForm").validate({
+        rules: {
+
+            JournalTitle: "required"
+             
+
+
+        },
+        messages: {
+            JournalTitle: "Please Enter Journal Title"
+            
+
+        },
+        errorPlacement: function (error, element) {
+            // Add the `help-block` class to the error element
+            error.addClass("help-block");
+
+            if (element.prop("type") === "checkbox") {
+                error.insertAfter(element.parent("label"));
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).parents(".col-md-9").addClass("has-error").removeClass("has-success");
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).parents(".col-md-9").addClass("has-success").removeClass("has-error");
+        }
+
+    });
+
+
+
+
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#SubCategoryList").select2();
+        $("#demoGrid").DataTable({
+            "processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": false, // for disable multiple column at once
+            "search": {
+                "caseInsensitive": false
+            },
+            "pageLength": 10,
+            "ajax": {
+                "url": '@Url.Action("GetAllJournals", "Admin")',
+                "type": "POST",
+                "datatype": "json"
+            },
+            "columnDefs":
+            [{
+                "targets": [0],
+                "visible": true,
+                "searchable": false
+            },
+                
+                
+
+            {
+                "targets": [5],
+                "searchable": false,
+                "orderable": false
+            }],
+
+            "columns": [
+                { "data": "Id", "name": "Id", "autoWidth": true },
+                { "data": "JournalTitle", "name": "JournalTitle", "autoWidth": true },
+                { "data": "Description", "name": "Description", "autoWidth": true },
+                { "data": "CreatedBy", "name": "CreatedBy", "autoWidth": true },
+                {
+                    "data": "CreatedOn", "name": "CreatedOn", "autoWidth": true,
+                    "render": function (value) {
+                        if (value === null) return "";
+                        var pattern = /Date\(([^)]+)\)/;
+                        var results = pattern.exec(value);
+                        var dt = new Date(parseFloat(results[1]));
+                        return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+                    }
+                },
+                {
+                    "render": function (data, type, row) {
+                        return '<a class="btn btn-info" onclick=EditFunction("'+row.Id+'"); >Edit</a>';
+                    }
+                },
+                
+            ]
+
+            });
+        });
+    </script>
+    <script>
+        function ResetForm() {
+            $("#myForm")[0].reset();
+            $("#saveButton").val("Submit");
+        }
+
+        
+
+
+         
+
+        function EditFunction(id) {
+        $.ajax({
+            data: { id: id },
+            url: '@Url.Action("GetJournal", "Admin")',
+            success: function (data) {
+                $("#JournalTitle").val(data[0].JournalTitle);
+                $("#Description").val(data[0].Description);
+                $("#hdID").val(id);
+                $("#saveButton").val("Update");
+                $("#JournalTitle").focus();
+            }
+        });
+        }
+
+        
+
+        
+    </script>
+     
+
+
+}

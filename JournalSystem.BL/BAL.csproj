@@ -49,18 +49,22 @@
   <ItemGroup>
     <Compile Include="Models\ArticleModel.cs" />
     <Compile Include="Models\IssueMasterModel.cs" />
+    <Compile Include="Models\UserMasterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\JournalMasterVM.cs" />
+    <Compile Include="Repository\ArticleMasterRepository.cs" />
+    <Compile Include="Repository\IssueMasterRepository.cs" />
     <Compile Include="Repository\JournalMasterRepository.cs" />
+    <Compile Include="Repository\UserMasterRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JournalSystem.DL\JournalSystem.DL.csproj">
+    <ProjectReference Include="..\JournalSystem.DL\DAL.csproj">
       <Project>{A811870F-B1C1-4CB8-91C3-FA4F5973F270}</Project>
-      <Name>JournalSystem.DL</Name>
+      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

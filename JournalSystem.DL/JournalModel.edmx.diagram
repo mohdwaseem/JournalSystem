@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="AIJDBModel.ArticlesMaster" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AIJDBModel.IssueMaster" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AIJDBModel.JournalMaster" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIJDBModel.UserMaster" Width="1.5" PointX="6.875" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

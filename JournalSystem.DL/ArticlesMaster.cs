@@ -32,7 +32,7 @@ namespace JournalSystem.DL
         public string DOI { get; set; }
         public string Category { get; set; }
         public string SubCategory { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public System.DateTime CreatedOn { get; set; }
         public string CreatedBy { get; set; }
     }
 }

@@ -28,5 +28,6 @@ namespace JournalSystem.DL
         public virtual DbSet<ArticlesMaster> ArticlesMasters { get; set; }
         public virtual DbSet<IssueMaster> IssueMasters { get; set; }
         public virtual DbSet<JournalMaster> JournalMasters { get; set; }
+        public virtual DbSet<UserMaster> UserMasters { get; set; }
     }
 }

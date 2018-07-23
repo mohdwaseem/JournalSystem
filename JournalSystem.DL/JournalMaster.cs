@@ -18,7 +18,7 @@ namespace JournalSystem.DL
         public string JournalTitle { get; set; }
         public string Description { get; set; }
         public string CoverPage { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public System.DateTime CreatedOn { get; set; }
         public string CreatedBy { get; set; }
     }
 }

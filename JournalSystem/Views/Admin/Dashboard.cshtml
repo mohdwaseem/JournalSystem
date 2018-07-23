@@ -3,5 +3,76 @@
     ViewBag.Title = "Dashboard";
 }
 
-<h2>Dashboard</h2>
+<div class="crumbs">
+    <ul id="breadcrumbs" class="breadcrumb">
+        <li>
+            <i class="icon-home current"></i>
+            <a href="@Url.Action("Dashboard","Admin")">Dashboard</a>
+        </li>
+
+    </ul>
+
+</div>
+<div class="page-header">
+    <div class="page-title">
+        <h3>Dashboard</h3>
+        <span>Journal Manager</span>
+    </div>
+
+</div>
+
+<div class="row row-bg">
+    <div class="col-sm-6 col-md-3">
+        <div class="statbox widget box box-shadow">
+            <div class="widget-content">
+                <div class="visual green">
+                    <i class="glyphicon glyphicon-tasks"></i>
+                </div>
+                <div class="title">All Journals</div>
+                <div class="value">@ViewBag.Journals</div>
+                <a class="more" href="@Url.Action("JournalMaster","Admin")">View More <i class="pull-right icon-angle-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3 hidden-xs">
+        <div class="statbox widget box box-shadow">
+            <div class="widget-content">
+                <div class="visual red">
+                    <i class="icon-user"></i>
+                </div>
+                <div class="title">All Issues</div>
+                <div class="value">@ViewBag.Issues</div>
+                <a class="more" href="@Url.Action("IssueMaster","Admin")">View More <i class="pull-right icon-angle-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3 hidden-xs">
+        <div class="statbox widget box box-shadow">
+            <div class="widget-content">
+                <div class="visual yellow">
+                    <i class="glyphicon glyphicon-list"></i>
+                </div>
+                <div class="title">Total Articles</div>
+                <div class="value">@ViewBag.Articles</div>
+                <a class="more" href="@Url.Action("ArticlesMaster","Admin")">View More <i class="pull-right icon-angle-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3 hidden-xs">
+        <div class="statbox widget box box-shadow">
+            <div class="widget-content">
+                <div class="visual green">
+                    <i class="glyphicon glyphicon-list"></i>
+                </div>
+                <div class="title">Total Authors</div>
+                <div class="value">@ViewBag.Authors 0</div>
+                <a class="more" href="@Url.Action("#","Admin")">View More <i class="pull-right icon-angle-right"></i></a>
+            </div>
+        </div>
+    </div>
+     
+</div>
+
+ 
+
 
